@@ -48,18 +48,44 @@ Atualize a coluna **Status** conforme formos resolvendo.
 | 30 | Esquece de aplicar o resultado e exporta | Exporta a peça ainda com modificadores ou geometria antiga | Avisar no final e oferecer botão de "Preparar para exportação" | Pendente |
 | 31 | Trabalha com objetos em coleções ocultas | Add-on não enxerga ou corta o objeto errado | Verificar visibilidade e avisar se algum objeto estiver hidden | Pendente |
 | 32 | Acha que o add-on substitui teste real de impressão | Imprime a peça final direto e se frustra com o encaixe | Mensagem clara: "Sempre imprima um teste da região do encaixe primeiro" | Pendente |
+| 33 | Objeto tem Scale negativo | Boolean e normals ficam completamente invertidos | Detectar scale negativo e avisar / corrigir | Pendente |
+| 34 | Objeto está muito longe da origem do mundo | Problemas de precisão de ponto flutuante no Boolean | Avisar se a distância da origem for muito grande | Pendente |
+| 35 | Tem Subdivision Surface ou Multires ativo | Boolean demora eternamente ou trava | Detectar e avisar fortemente para aplicar ou desativar | Pendente |
+| 36 | Tem Shape Keys no objeto | Boolean pode corromper ou ignorar as shape keys | Detectar shape keys e avisar o usuário | Pendente |
+| 37 | Tem Geometry Nodes complexo | Resultado imprevisível ou erro | Detectar Geometry Nodes e exigir que seja aplicado antes | Pendente |
+| 38 | Usuário tenta cortar o personagem inteiro de uma vez | Resultado caótico e difícil de controlar | Orientar a isolar apenas as duas partes que vão se encaixar | Pendente |
+| 39 | Muda a tolerância depois de já ter cortado | Fica com geometria inconsistente e não sabe o que fazer | Deixar claro que tolerância só vale antes do corte + opção de desfazer | Pendente |
+| 40 | Quer que a junta fique 100% invisível | Frustração garantida (tolerância sempre cria uma linha) | Explicar que sempre vai existir uma linha de emenda | Pendente |
+| 41 | Imprime as duas peças com orientações muito diferentes | Uma peça fica dimensionalmente diferente da outra | Avisar sobre manter orientação semelhante na impressão | Pendente |
+| 42 | Lixa agressivamente uma das faces de encaixe | Destrói a tolerância que o add-on criou | Recomendar lixar o mínimo possível na superfície de contato | Pendente |
+| 43 | Usa resinas diferentes nas duas peças | Shrinkage diferente → encaixe muda | Avisar para usar a mesma resina e mesmas configurações | Pendente |
+| 44 | Espera que o pino seja estrutural (aguente pose) | Pino quebra quando tenta articular a peça | Deixar claro que o pino é só de alinhamento/montagem, não estrutural | Pendente |
+| 45 | Esquece qual lado é macho e qual é fêmea dias depois | Tenta montar errado e força a peça | Nomear automaticamente os objetos (ex: Blusa_Femea / Ombro_Macho) | Pendente |
+| 46 | Tem Custom Split Normals ou Auto Smooth forte | Sombreamento fica estranho após o corte | Avisar e oferecer limpeza de custom normals na região | Pendente |
+| 47 | Trabalha com dados vinculados (linked/instanced) | Não consegue modificar ou gera erro | Detectar e avisar para fazer Make Single User | Pendente |
+| 48 | Acha que 0.2mm de tolerância é o mesmo para todas as resinas | Encaixe fica apertado ou frouxo dependendo da resina | Deixar presets por tipo de resina (e deixar claro que ainda precisa testar) | Pendente |
 
 ---
 
-## Observações (visão pessimista)
+## Observações Finais (Modo Pessimista Real)
 
-- Usuário leigo **vai** selecionar os objetos na ordem errada.
-- Usuário leigo **vai** colocar tolerância absurda.
-- Usuário leigo **vai** rodar o add-on sem salvar.
-- Usuário leigo **vai** esperar que funcione perfeitamente na primeira tentativa.
-- Usuário leigo **vai** culpar o add-on quando o problema for falta de teste de impressão.
+O usuário leigo vai:
 
-**Prioridade máxima para proteção de leigo:**  
-IDs 01, 06, 07, 12, 19, 20, 21, 23, 25, 27, 32
+- Selecionar os objetos na ordem errada
+- Colocar valor de tolerância absurdo
+- Rodar o add-on sem salvar o arquivo
+- Esperar resultado perfeito de primeira
+- Culpar o add-on quando o problema for falta de teste de impressão
+- Tentar cortar o personagem inteiro de uma vez
+- Lixar demais e destruir a tolerância
+- Usar resinas diferentes e não entender por que não encaixou
+- Achar que o pino serve para articular a figura
+- Esquecer qual lado é macho e qual é fêmea
 
-Atualizar este arquivo sempre que um novo jeito de o usuário se auto-sabotar for descoberto.
+**Conclusão realista:**  
+Mesmo com todas as proteções possíveis, o add-on **não consegue impedir** o usuário de cometer erros de julgamento. O máximo que ele pode fazer é avisar, dificultar o erro e educar.
+
+Prioridade máxima de proteção:  
+**01, 06, 07, 12, 19, 20, 21, 23, 25, 27, 32, 33, 35, 45**
+
+Atualizar sempre que descobrir mais um jeito do usuário se auto-sabotar.

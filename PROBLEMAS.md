@@ -34,11 +34,32 @@ Atualize a coluna **Status** conforme formos resolvendo.
 | 16 | Pino fraco ou mal posicionado | Pino quebra ou não alinha as peças | Controle de diâmetro + posicionamento manual + tolerância própria | Pendente |
 | 17 | Boolean gera topologia ruim (n-gons) | Problemas na impressão e na visualização | Limpeza básica na região do corte após o Boolean | Pendente |
 | 18 | Solver do Boolean instável | Resultado diferente entre Fast e Exact | Usar Exact com fallback para Fast + aviso | Pendente |
+| 19 | Usuário seleciona os objetos na ordem errada | Troca macho e fêmea → tolerância invertida e peça não encaixa | Forçar escolha clara (botões ou cores) de qual é o Macho e qual é a Fêmea | Pendente |
+| 20 | Usuário está em Edit Mode | Add-on não encontra os objetos corretamente ou falha | Detectar modo e avisar / forçar Object Mode | Pendente |
+| 21 | Selecionou só 1 objeto ou mais de 2 | Add-on quebra ou corta o objeto errado | Validar rigorosamente: exatamente 2 objetos mesh selecionados | Pendente |
+| 22 | Objeto selecionado não é Mesh | Erro ou crash ao tentar Boolean em Curve/Empty/etc | Verificar tipo do objeto e recusar se não for Mesh | Pendente |
+| 23 | Usuário não entende o valor da tolerância | Coloca 2.0 pensando que é pouco, ou 0.02 e fica apertado demais | Mostrar exemplos claros na interface ("0.15~0.25mm recomendado para resina") | Pendente |
+| 24 | Aplica o add-on várias vezes sem querer | Geometria fica destruída e cheia de cortes extras | Desabilitar o botão após uso + exigir confirmação forte | Pendente |
+| 25 | Não salva o arquivo antes de rodar | Perde horas de trabalho se der ruim | Aviso obrigatório: "Salve o arquivo antes de continuar" | Pendente |
+| 26 | Coloca o pino em área muito fina | Pino ou a parede ao redor quebra na impressão ou montagem | Verificar espessura local antes de criar o pino e avisar | Pendente |
+| 27 | Espera resultado perfeito na primeira vez | Fica frustrado e acha que o add-on é ruim | Deixar bem claro no README e na interface que **teste de impressão é obrigatório** | Pendente |
+| 28 | Corta em cima de detalhes importantes | Destrói rosto, costura, logo ou detalhe da roupa | Preview do corte + aviso visual da região afetada | Pendente |
+| 29 | Usa profundidade de inserção absurda | Ombro some dentro da blusa ou quase não entra | Limitar valores mínimos e máximos + preview em tempo real | Pendente |
+| 30 | Esquece de aplicar o resultado e exporta | Exporta a peça ainda com modificadores ou geometria antiga | Avisar no final e oferecer botão de "Preparar para exportação" | Pendente |
+| 31 | Trabalha com objetos em coleções ocultas | Add-on não enxerga ou corta o objeto errado | Verificar visibilidade e avisar se algum objeto estiver hidden | Pendente |
+| 32 | Acha que o add-on substitui teste real de impressão | Imprime a peça final direto e se frustra com o encaixe | Mensagem clara: "Sempre imprima um teste da região do encaixe primeiro" | Pendente |
 
 ---
 
-## Observações
+## Observações (visão pessimista)
 
-- Prioridade alta: IDs 01, 02, 03, 05, 06, 07, 12
-- Esses são os que mais quebram o fluxo do usuário na prática.
-- Atualizar este arquivo sempre que um problema for resolvido ou novo for descoberto.
+- Usuário leigo **vai** selecionar os objetos na ordem errada.
+- Usuário leigo **vai** colocar tolerância absurda.
+- Usuário leigo **vai** rodar o add-on sem salvar.
+- Usuário leigo **vai** esperar que funcione perfeitamente na primeira tentativa.
+- Usuário leigo **vai** culpar o add-on quando o problema for falta de teste de impressão.
+
+**Prioridade máxima para proteção de leigo:**  
+IDs 01, 06, 07, 12, 19, 20, 21, 23, 25, 27, 32
+
+Atualizar este arquivo sempre que um novo jeito de o usuário se auto-sabotar for descoberto.
